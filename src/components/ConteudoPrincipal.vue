@@ -18,10 +18,14 @@
         Sua lista está vazia, selecione ingredientes para iniciar!
       </p>
     </section>
+
+    <SelecionarIngredientes />
   </main>
 </template>
 
-<script>
+<script lang="ts">
+import SelecionarIngredientes from './SelecionarIngredientes.vue';
+
   export default {
     name: 'ConteudoPrincipal',
     data() {
@@ -39,6 +43,9 @@
         'Alho'
         ]
       }
+    },
+    components: {
+      SelecionarIngredientes
     }
   }
 </script>
