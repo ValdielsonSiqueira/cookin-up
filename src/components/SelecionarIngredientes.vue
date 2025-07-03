@@ -9,30 +9,35 @@
 
     <ul class="categorias">
       <li v-for="categoria in categorias" :key="categoria.nome">
-        {{ categoria.nome }}
+        <CardCategoria  :categoria="categoria"/>
       </li>
     </ul>
 
     <p class="paragrafo dica">
-      *Atenção: consideramos que você tem em casa sak, pimenta e água.
+      *Atenção: consideramos que você tem em casa sal, pimenta e água.
     </p>
   </section>
 </template>
 
 <script lang="ts">
-import type ICategorias from '@/interfaces/ICategorias';
+import type ICategoria from '@/interfaces/ICategoria';
 import { obterCategorias } from '@/services/index';
+import CardCategoria from './CardCategoria.vue';
 
   export default {
     name: 'SelecionarIngredientes',
     data() {
       return {
-        categorias: [] as ICategorias[],
+        categorias: [] as ICategoria[],
       }
     },
      async created () {
       this.categorias = await obterCategorias();
     },
+    components: {
+      CardCategoria,
+    },
+    
   }
 </script>
 

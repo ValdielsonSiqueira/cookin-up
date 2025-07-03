@@ -1,4 +1,4 @@
-export default interface ICategorias {
+export default interface ICategoria {
   nome: string;
   ingredientes: string[];
   imagem: string;
