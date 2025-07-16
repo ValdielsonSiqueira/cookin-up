@@ -1,30 +1,14 @@
 <template>
   <main class="conteudo-principal">
-    <section>
-      <span class="subtitulo-lg sua-lista-texto">
-        Sua lista:
-      </span>
-      
-      <ul v-if="ingredientes.length" class="ingredientes-sua-lista">
-        <li v-for="(ingrediente, index) in ingredientes" class="ingrediente">
-          <span :key="index">
-            {{ ingrediente }}
-          </span>
-        </li>
-      </ul>
-
-      <p v-else class="paragrafo lista-vazia">
-        <img src="../assets/imagens/icones/lista-vazia.svg" alt="Ícone de uma lista vazia" class="icone-lista-vazia">
-        Sua lista está vazia, selecione ingredientes para iniciar!
-      </p>
-    </section>
-
+    <SuaLista :lista="{ titulo: 'teste', ingredientes, placeholder: 'Sua lista está vazia, selecione ingredientes para iniciar!' }"/>
     <SelecionarIngredientes />
   </main>
 </template>
 
 <script lang="ts">
 import SelecionarIngredientes from './SelecionarIngredientes.vue';
+import Tag from './Tag.vue';
+import SuaLista from './SuaLista.vue';
 
   export default {
     name: 'ConteudoPrincipal',
@@ -45,7 +29,9 @@ import SelecionarIngredientes from './SelecionarIngredientes.vue';
       }
     },
     components: {
-      SelecionarIngredientes
+      SelecionarIngredientes,
+      Tag,
+      SuaLista
     }
   }
 </script>
@@ -61,43 +47,6 @@ import SelecionarIngredientes from './SelecionarIngredientes.vue';
   flex-direction: column;
   align-items: center;
   gap: 5rem;
-}
-
-.sua-lista-texto {
-  color: var(--coral, #F0633C);
-  display: block;
-  text-align: center;
-  margin-bottom: 1.5rem;
-}
-
-.ingredientes-sua-lista {
-  display: flex;
-  justify-content: center;
-  gap: 1rem 1.5rem;
-  flex-wrap: wrap;
-}
-
-.ingrediente {
-  display: inline-block;
-  border-radius: 0.5rem;
-  min-width: 4.25rem;
-  padding: 0.5rem;
-  text-align: center;
-    transition: 0.2s;
-    color: var(--creme, #FFFAF3);
-  background: var(--coral, #F0633C);
-  font-weight: 700;
-}
-
-.lista-vazia {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0.25rem;
-
-  color: var(--coral, #F0633C);
-  text-align: center;
 }
 
 @media only screen and (max-width: 1300px) {
